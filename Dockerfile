@@ -8,4 +8,6 @@ RUN npm ci --only=production
 
 COPY . .
 
+RUN ls
+
 CMD ["node", "main.js"]
