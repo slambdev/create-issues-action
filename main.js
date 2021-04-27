@@ -15,6 +15,13 @@ const labels = [
     const newCoGitHubToken = core.getInput('gh_token'); // GITHUB_TOKEN
     const context = github.context;
 
+    core.info('GitHub IBM Token');
+    core.info(ibmGitHubToken);
+    core.info('ZenHub IBM Token');
+    core.info(zenHubToken);
+    core.info('This GitHub Token');
+    core.info(newCoGitHubToken);
+
     const newCoOctokit = github.getOctokit(newCoGitHubToken);
 
     core.info("Successfully initialized NewCo GH Client");
