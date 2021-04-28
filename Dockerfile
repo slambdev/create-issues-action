@@ -6,4 +6,4 @@ RUN npm ci --only=production
 
 RUN ls
 
-CMD ["npm", "start"]
+ENTRYPOINT ["npm", "start"]
