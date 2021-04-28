@@ -4,4 +4,6 @@ COPY . /
 
 RUN ls
 
+RUN chmod +x /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
