@@ -1,6 +1,6 @@
 FROM node:14-alpine
 
-COPY . .
+COPY . /
 
 RUN npm ci --only=production
 
