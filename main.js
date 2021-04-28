@@ -12,7 +12,7 @@ const labels = [
 (async() => {
     const ibmGitHubToken = core.getInput('gh_ibm_token');
     const zenHubToken = core.getInput('zenhub_ibm_apikey');
-    const newCoGitHubToken = core.getInput('gh_token'); // GITHUB_TOKEN
+    const newCoGitHubToken = core.getInput('gh_token');
     const context = github.context;
 
     core.info('GitHub IBM Token');
