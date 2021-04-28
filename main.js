@@ -38,7 +38,7 @@ const labels = [
             core.info("Successfully created label", label);
             core.info("------------------------------------");
         } catch (error) {
-            core.warn("Failed to create label with error", {
+            core.error("Failed to create label with error", {
                 error,
                 label: label.name,
                 color: label.color,
