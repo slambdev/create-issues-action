@@ -1,13 +1,11 @@
 FROM node:14-alpine
 
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm ci --only=production
+WORKDIR /github/workspace/
 
 COPY . .
 
+RUN npm ci --only=production
+
 RUN ls
 
-CMD ["npm", "start"]
+ENTRYPOINT ["node", "./main.js"]
