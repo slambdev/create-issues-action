@@ -9,5 +9,5 @@ inputs:
     description: 'ZenHub API Key for IBM'
     required: false
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'node14'
+  main: 'main.js'
