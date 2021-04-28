@@ -7385,11 +7385,7 @@ const labels = [
             core.info("Successfully created label", label);
             core.info("------------------------------------");
         } catch (error) {
-            core.error("Failed to create label with error", {
-                error,
-                label: label.name,
-                color: label.color,
-            });
+            core.error(`Failed to create label (${label.name}/${label.color}) with error: ${error}`);
             core.info("------------------------------------");
         }
     }));
