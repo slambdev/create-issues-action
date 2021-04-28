@@ -1,3 +1,5 @@
+// https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action
+
 const Octokit = require("@octokit/rest");
 const core = require('@actions/core');
 const github = require('@actions/github');
@@ -15,13 +17,6 @@ const labels = [
     const newCoGitHubToken = core.getInput('gh_token');
     const context = github.context;
 
-    core.info('GitHub IBM Token');
-    core.info(ibmGitHubToken);
-    core.info('ZenHub IBM Token');
-    core.info(zenHubToken);
-    core.info('This GitHub Token');
-    core.info(newCoGitHubToken);
-
     const newCoOctokit = github.getOctokit(newCoGitHubToken);
 
     core.info("Successfully initialized NewCo GH Client");
@@ -38,11 +33,7 @@ const labels = [
             core.info("Successfully created label", label);
             core.info("------------------------------------");
         } catch (error) {
-            core.warn("Failed to create label with error", {
-                error,
-                label: label.name,
-                color: label.color,
-            });
+            core.error(`Failed to create label (${label.name}/${label.color}) with error: ${error}`);
             core.info("------------------------------------");
         }
     }));
