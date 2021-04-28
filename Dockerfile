@@ -10,4 +10,4 @@ COPY . .
 
 RUN ls
 
-ENTRYPOINT ["node", "main.js"]
+ENTRYPOINT ["node", "./main.js"]
