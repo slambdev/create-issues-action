@@ -10,4 +10,4 @@ COPY . .
 
 RUN ls
 
-ENTRYPOINT ["npm", "start"]
+CMD ["npm", "start"]
