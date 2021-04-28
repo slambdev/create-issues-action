@@ -8,4 +8,4 @@ RUN npm ci --only=production
 
 RUN ls
 
-ENTRYPOINT ["node", "./main.js"]
+CMD ["npm", "start"]
