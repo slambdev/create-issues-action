@@ -14,7 +14,7 @@ The implications of this means if you wish to share a GitHub action, the compile
 
 ### Upsides
 
-This approach is simple. It's another npm module you nened to install, and does not require knowledge in other technology.
+This approach is simple. It's another npm module you need to install, and does not require knowledge in other technology.
 
 ### Downsides
 
@@ -27,9 +27,10 @@ This approach is simple. It's another npm module you nened to install, and does 
 
 General instructions on how to setup a GitHub action with Docker can be found [here](https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action).
 
-For a Typescript project, we need to do the following to setup your GitHub action:
+For a Typescript project, we need to do the following to setup your GitHub action using Docker:
 
-1. Add a Dockerfile
+1. **Add a Dockerfile**
+
   Add the following contents to your Dockerfile. This will set the builder to node (you are welcome to use any version you would like) and copy all of the files in your directory to the `/` directory in the Docker volume. Afterwards, it will run a file called `entrypoint.sh` which we will add in the next step.
   
   ```dockerfile
@@ -43,7 +44,8 @@ For a Typescript project, we need to do the following to setup your GitHub actio
   ```
 
   Note: If you already have a Dockerfile, be aware that using `WORKDIR` will no longer work. Reference [GitHub's docs on using `WORKDIR`](https://docs.github.com/en/actions/creating-actions/dockerfile-support-for-github-actions#workdir).
-2. Add a entrypoint.sh file
+2. **Add a entrypoint.sh file**
+
   Add a file called `entrypoint.sh` with the below contents. This is the file that the Dockerfile in the previous step references.
 
   ```bash
@@ -55,7 +57,7 @@ For a Typescript project, we need to do the following to setup your GitHub actio
   ```
 
   The above file is very barebones. If you have any special build steps required for your code to run, you will want to add them to this file before running your code with `npm start`.
-3. Add an action.yml file
+3. **Add an action.yml file**
 
   Add a file to your root directory called `action.yml`. Within the file, you will define your GitHub action. Under the `runs` field, you will stipulate that the action uses docker and point to the Dockerfile added in step 1.
 
