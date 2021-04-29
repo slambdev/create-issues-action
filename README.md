@@ -119,7 +119,12 @@ For a Typescript project, we need to do the following to setup your GitHub actio
 
 ### Upsides
 
+- You don't have to commit your node_modules or compiled code into GitHub
+- You can do just about anything using Docker. If you have a complicated build or running process, Docker ensures you have a standardized environment for you to run your processes in (this is literally what Docker is meant for)
+
 ### Downsides
+
+- You need to know a little bit of Docker
 
 ## Automating releases
 
