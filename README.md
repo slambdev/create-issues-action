@@ -8,9 +8,42 @@ The implications of this means if you wish to share a GitHub action, the compile
 
 [`ncc`](https://github.com/vercel/ncc) is a CLI tool used to compile your NodeJs files, including all of its dependencies, into a single file.
 
-1. Add `ncc` to your build step
-2. Add an action.yml file
-3. Release your action
+**1. Add `ncc` to your build step**
+
+  Install the `ncc` package to your repository with the following command:
+
+  ```bash
+  npm i @vercel/ncc --save-dev
+  ```
+
+  Add the followinng to your compile step (this assumes your main Tyepscript file is `main.ts`).
+
+  ```bash
+  ncc build src/main.ts --minify
+  ```
+
+  The above command will add the compiled file to `dist/index.js`. This file will need to be committed to your main branch.
+
+**2. Add an action.yml file**
+
+ Add a file to your root directory called `action.yml`. Within the file, you will define your GitHub action. Under the `runs` field, you will stipulate that the action uses node and point to the compiled file generated in the previous step.
+
+ ```yml
+ # action.yml
+ name: 'Insert name'
+ description: 'Insert a nice friendly description'
+ inputs:
+   # Add any necessary inputs for your action.
+    # Example: GitHub Token
+    gh_token:
+      description: 'GitHub Token'
+      required: true
+ runs:
+   using: 'node12'
+   main: 'dist/index.js'
+ ```
+
+**3. Release your action**
 
 ### Upsides
 
@@ -29,7 +62,7 @@ General instructions on how to setup a GitHub action with Docker can be found [h
 
 For a Typescript project, we need to do the following to setup your GitHub action using Docker:
 
-1. **Add a Dockerfile**
+**1. Add a Dockerfile**
 
   Add the following contents to your Dockerfile. This will set the builder to node (you are welcome to use any version you would like) and copy all of the files in your directory to the `/` directory in the Docker volume. Afterwards, it will run a file called `entrypoint.sh` which we will add in the next step.
   
@@ -44,7 +77,8 @@ For a Typescript project, we need to do the following to setup your GitHub actio
   ```
 
   Note: If you already have a Dockerfile, be aware that using `WORKDIR` will no longer work. Reference [GitHub's docs on using `WORKDIR`](https://docs.github.com/en/actions/creating-actions/dockerfile-support-for-github-actions#workdir).
-2. **Add a entrypoint.sh file**
+
+**2. Add a entrypoint.sh file**
 
   Add a file called `entrypoint.sh` with the below contents. This is the file that the Dockerfile in the previous step references.
 
@@ -57,7 +91,8 @@ For a Typescript project, we need to do the following to setup your GitHub actio
   ```
 
   The above file is very barebones. If you have any special build steps required for your code to run, you will want to add them to this file before running your code with `npm start`.
-3. **Add an action.yml file**
+
+**3. Add an action.yml file**
 
   Add a file to your root directory called `action.yml`. Within the file, you will define your GitHub action. Under the `runs` field, you will stipulate that the action uses docker and point to the Dockerfile added in step 1.
 
