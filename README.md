@@ -45,6 +45,8 @@ The implications of this means if you wish to share a GitHub action, the compile
 
 **3. Release your action**
 
+  At this point, your action is ready to be shared! To share your action, you need to [create a new release for your repository](https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository).
+
 ### Upsides
 
 This approach is simple. It's another npm module you need to install, and does not require knowledge in other technology.
@@ -111,19 +113,30 @@ For a Typescript project, we need to do the following to setup your GitHub actio
     image: 'Dockerfile'
   ```
 
-4. Release your action
+**4. Release your action**
+
+  At this point, your action is ready to be shared! To share your action, you need to [create a new release for your repository](https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository).
 
 ### Upsides
 
 ### Downsides
 
+## Automating releases
+
+An important note to make is that whennever you make a code chagne to your action and wish to share this channge out to anyone who is consuming your action, you will need to create a release for the change.
+
+GitHub has provided an example of how you can automate your release process with GitHub Actions.
+
+[https://github.com/actions/create-release](https://github.com/actions/create-release)
+
+Though the above repository is marked as unmaintainned, it provides a good foundation for how you can setup your own release with GitHub Actions. Other examples of GitHub Actions that automate releases have been shared as well and can be found linked in the above repository.
 
 ## Summary
 
 GitHub is aware of the need to use actions within actions and is striving to deliver this feature. You can track GitHub's progress in the following issue:
 
-https://github.com/actions/runner/issues/646
+[https://github.com/actions/runner/issues/646](https://github.com/actions/runner/issues/646)
 
 I recommend also reading through the following issue that originally brought up this feature request here:
 
-https://github.com/actions/runner/issues/438
+[https://github.com/actions/runner/issues/438](https://github.com/actions/runner/issues/438)
