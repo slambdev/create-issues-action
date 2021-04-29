@@ -12,7 +12,7 @@ const labels = [
 (async() => {
     const ibmGitHubToken = core.getInput('gh_ibm_token');
     const zenHubToken = core.getInput('zenhub_ibm_apikey');
-    const newCoGitHubToken = core.getInput('gh_token'); // GITHUB_TOKEN
+    const newCoGitHubToken = core.getInput('gh_token');
     const context = github.context;
 
     core.info('GitHub IBM Token');
@@ -38,15 +38,14 @@ const labels = [
             core.info("Successfully created label", label);
             core.info("------------------------------------");
         } catch (error) {
-            core.warn("Failed to create label with error", {
-                error,
-                label: label.name,
-                color: label.color,
-            });
+            core.error(`Failed to create label (${label.name}/${label.color}) with error: ${error}`);
             core.info("------------------------------------");
         }
     }));
 
     core.info('Finished creating labels!');
     process.exit(0);
-})().catch(core.error);
+})().catch(error => {
+    core.error(error);
+    process.exit(1);
+});

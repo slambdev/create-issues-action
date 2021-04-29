@@ -7350,8 +7350,6 @@ module.exports = require("zlib");;
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-// https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action
-
 const Octokit = __nccwpck_require__(30);
 const core = __nccwpck_require__(65);
 const github = __nccwpck_require__(435);
@@ -7369,7 +7367,14 @@ const labels = [
     const newCoGitHubToken = core.getInput('gh_token'); // GITHUB_TOKEN
     const context = github.context;
 
-    const newCoOctokit = github.getOctokit(newCoGitHubToken);
+    core.info('GitHub IBM Token');
+    core.info(ibmGitHubToken);
+    core.info('ZenHub IBM Token');
+    core.info(zenHubToken);
+    core.info('This GitHub Token');
+    core.info(process.env.GITHUB_TOKEN);
+
+    const newCoOctokit = github.getOctokit(process.env.GITHUB_TOKEN);
 
     core.info("Successfully initialized NewCo GH Client");
 
@@ -7385,7 +7390,11 @@ const labels = [
             core.info("Successfully created label", label);
             core.info("------------------------------------");
         } catch (error) {
-            core.error(`Failed to create label (${label.name}/${label.color}) with error: ${error}`);
+            core.warn("Failed to create label with error", {
+                error,
+                label: label.name,
+                color: label.color,
+            });
             core.info("------------------------------------");
         }
     }));
@@ -7393,6 +7402,7 @@ const labels = [
     core.info('Finished creating labels!');
     process.exit(0);
 })().catch(core.error);
+
 })();
 
 module.exports = __webpack_exports__;
