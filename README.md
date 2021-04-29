@@ -128,13 +128,13 @@ For a Typescript project, we need to do the following to setup your GitHub actio
 
 ## Automating releases
 
-An important note to make is that whennever you make a code chagne to your action and wish to share this channge out to anyone who is consuming your action, you will need to create a release for the change.
+An important note to make is that whenever you make a code change to your action and wish to share this change out to anyone who is consuming your action, you will need to create a release for the change.
 
 GitHub has provided an example of how you can automate your release process with GitHub Actions.
 
 [https://github.com/actions/create-release](https://github.com/actions/create-release)
 
-Though the above repository is marked as unmaintainned, it provides a good foundation for how you can setup your own release with GitHub Actions. Other examples of GitHub Actions that automate releases have been shared as well and can be found linked in the above repository.
+Though the above repository is marked as unmaintained, it provides a good foundation for how you can setup your own release with GitHub Actions. Other examples of GitHub Actions that automate releases have been shared as well and can be found linked in the above repository.
 
 ## Summary
 
