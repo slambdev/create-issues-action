@@ -1,6 +1,6 @@
 # GitHub Actions with Typescript
 
-Currently, GitHub Actions do not support actions within actions. This means for Typescript projects where you need to compile your code into NodeJs and then run it can be done in workflows (i.e. a series of actions), but not in a single shareable action.
+Currently, GitHub Actions do not support actions within actions. This means for Typescript projects where you need to compile your code into NodeJs and then run it can only be done in workflows (i.e. a series of actions) annd not in a single shareable action.
 
 The implications of this means if you wish to share a GitHub action, the compiled code for the action must be merged into a single file and checked into GitHub or you have to use Docker.
 
