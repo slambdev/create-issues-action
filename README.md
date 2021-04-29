@@ -49,7 +49,7 @@ The implications of this means if you wish to share a GitHub action, the compile
 
 ### Upsides
 
-This approach is simple. It's another npm module you need to install, and does not require knowledge in other technology.
+- This approach is simple. It's another npm module you need to install, and does not require knowledge in other technology.
 
 ### Downsides
 
