@@ -1,0 +1,16 @@
+# action.yml
+name: 'Create labels'
+description: 'Create standard labels'
+inputs:
+  gh_ibm_token:
+    description: 'GitHub Oauth Token for IBM'
+    required: true
+  zenhub_ibm_apikey:
+    description: 'ZenHub API Key for IBM'
+    required: false
+  gh_token:
+    description: 'GitHub Token'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
